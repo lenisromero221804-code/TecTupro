@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.webmanifest">
+<title>TecTuPro — Clases Técnicas</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f0e6;color:#20252b}
+header{background:#111827;color:white;padding:25px 18px;border-radius:0 0 25px 25px}
+.logo{font-size:30px;font-weight:bold}
+.logo span{color:#e7b84b}
+.tag{font-size:13px;letter-spacing:2px;margin-top:5px}
+main{max-width:700px;margin:auto;padding:18px 15px 90px}
+.card{background:white;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 4px 15px #0002}
+h2{margin-top:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.subject{padding:25px 15px;border-radius:16px;color:white;font-weight:bold;font-size:18px}
+.ingles{background:#304766}
+.taller{background:#657f72}
+.dibujo{background:#9a7b47}
+button,input,select{width:100%;padding:13px;border-radius:11px;border:1px solid #ddd;font-size:15px}
+button{background:#111827;color:white;font-weight:bold;border:0;margin-top:8px}
+.yellow{background:#e7b84b;color:#111}
+.green{background:#657f72}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;padding:9px;display:flex;gap:8px;z-index:5}
+nav button{margin:0;background:#111827;font-size:12px}
+.hidden{display:none}
+.small{color:#6b7280;font-size:13px}
+.reserva{border-left:5px solid #e7b84b;padding:12px;margin:10px 0;background:#f7f7f7;border-radius:8px}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TecTu<span>Pro</span></div>
+  <div class="tag">CLASES TÉCNICAS</div>
+  <p>Aprendé hoy, construí mañana.</p>
+</header>
+
+<main>
+
+<section id="inicio">
+<div class="card">
+<h2>¡Bienvenido a TecTuPro! 👋</h2>
+<p>Un espacio para aprender y reservar clases de materias técnicas.</p>
+</div>
+
+<div class="card">
+<h2>Materias</h2>
+<div class="grid">
+<div class="subject ingles">🇬🇧<br>Inglés</div>
+<div class="subject taller">🔧<br>Taller</div>
+<div class="subject dibujo">📐<br>Dibujo Técnico</div>
+</div>
+</div>
+</section>
+
+<section id="clases" class="hidden">
+<div class="card">
+<h2>📅 Reservar una clase</h2>
+
+<label>Materia</label>
+<select id="materia">
+<option>Inglés</option>
+<option>Taller</option>
+<option>Dibujo Técnico</option>
+</select>
+
+<br><br>
+
+<label>Fecha</label>
+<input id="fecha" type="date">
+
+<br><br>
+
+<label>Horario</label>
+<select id="hora">
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+<option>18:00</option>
+</select>
+
+<button class="yellow" onclick="reservar()">Reservar clase</button>
+</div>
+
+<div class="card">
+<h2>Mis reservas</h2>
+<div id="reservas"></div>
+</div>
+</section>
+
+<section id="perfil" class="hidden">
+<div class="card">
+<h2>👤 Mi perfil</h2>
+<input id="nombre" placeholder="Nombre">
+<br><br>
+<input id="curso" placeholder="Curso">
+<button class="green" onclick="guardarPerfil()">Guardar perfil</button>
+</div>
+
+<div class="card">
+<h2>🔔 Notificaciones</h2>
+<p>Acá aparecerán tus avisos y recordatorios.</p>
+</div>
+</section>
+
+</main>
+
+<nav>
+<button onclick="mostrar('inicio')">⌂ Inicio</button>
+<button onclick="mostrar('clases')">📚 Clases</button>
+<button onclick="mostrar('perfil')">👤 Perfil</button>
+</nav>
+
+<script>
+let reservas=JSON.parse(localStorage.getItem("reservas")||"[]");
+
+function mostrar(id){
+document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden
