@@ -1,0 +1,10 @@
+{
+  "name": "TecTuPro - Clases Particulares",
+  "short_name": "TecTuPro",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a",
+  "description": "Clases particulares de inglés, taller y dibujo técnico.",
+  "icons": []
+}
